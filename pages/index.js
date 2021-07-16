@@ -20,6 +20,28 @@ function ProfileSidebar(props){
   )
 }
 
+function ProfileRelationBox(props){
+  return(
+    <ProfileRelationsBoxWrapper>
+      <h2 className='smallTitle'>
+          {props.title} ({props.items.length})
+      </h2>
+      <ul>
+        {/* {props.items.map((itemAtual) => {
+          return(
+            <li key={itemAtual}>
+              <a href={`https://github.com/${itemAtual}.png`}>
+                <img src={itemAtual.image} />
+                <span>{itemAtual.title}</span>
+              </a>
+            </li>
+          )
+        })} */}
+      </ul>
+    </ProfileRelationsBoxWrapper>
+  )
+}
+
 export default function Home() {
   const githubUser = 'jv-medeiros';
   const [comunidades, setComunidades] = React.useState([
@@ -37,6 +59,17 @@ export default function Home() {
     'marcobrunodev',
     'felipefialho'
   ]
+
+  const [seguidores, setSeguidores] = React.useState([]);
+  React.useEffect(function(){
+    fetch('https://api.github.com/users/peas/followers')
+      .then(function (respostaServidor){
+        return respostaServidor.json();
+      })
+      .then(function (respostaCompleta){
+        setSeguidores(respostaCompleta);
+      })
+  }, []) //Pra executar só no primeiro carregamento
 
   return( 
     <>
@@ -87,7 +120,8 @@ export default function Home() {
           </Box>
         </div>
         <div className='profileRelationArea' style={{ gridArea: 'profileRelationsArea' }}>
-        <ProfileRelationsBoxWrapper>
+          <ProfileRelationBox title='Seguidores' items={seguidores} />
+          <ProfileRelationsBoxWrapper>
             <h2 className='smallTitle'>
               Comunidades ({comunidades.length})
             </h2>
