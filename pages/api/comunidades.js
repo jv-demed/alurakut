@@ -8,7 +8,7 @@ export default async function recebedorDeRequests(request, response){
         const client = new SiteClient(TOKEN);
     
         const registroCriado = await client.items.create({
-            itemType: '52021',
+            itemType: '972987',
             ...request.body,
             // title: '',
             // imageUrl: '',

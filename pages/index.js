@@ -26,18 +26,18 @@ function ProfileRelationBox(props){
       <h2 className='smallTitle'>
           {props.title} ({props.items.length})
       </h2>
-      <ul>
-        {/* {props.items.map((itemAtual) => {
+      {/* <ul>
+        {props.items.map((itemAtual) => {
           return(
-            <li key={itemAtual}>
-              <a href={`https://github.com/${itemAtual}.png`}>
-                <img src={itemAtual.image} />
-                <span>{itemAtual.title}</span>
+            <li key={itemAtual.login}>
+              <a href={`https://github.com/${itemAtual.login}.png`}>
+                <img src={itemAtual.avatar_url} /> 
+                <span>{itemAtual.login}</span>
               </a>
             </li>
           )
-        })} */}
-      </ul>
+        })}
+      </ul> */}
     </ProfileRelationsBoxWrapper>
   )
 }
